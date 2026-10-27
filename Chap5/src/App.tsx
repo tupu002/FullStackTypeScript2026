@@ -1,31 +1,8 @@
-import { type ChangeEvent, useEffect, useState } from "react";
 import "./App.css";
-import Home, { type UserType } from "./Home";
+import UserForm from "./UserForm";
 
 function App() {
-    const [id, setId] = useState("");
-    const [users, setUsers] = useState<UserType[]>();
-
-    useEffect(() => {
-        const idToGet = `https://jsonplaceholder.typicode.com/posts/${id}`;
-        fetch(idToGet).then((result) => {
-            result.json().then((users) => {
-                console.log("users updated", users);
-                setUsers(Array.isArray(users) ? users : [users]);
-            });
-        });
-    }, [id]);
-
-    const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setId(e.target.value);
-    };
-
-    return (
-        <>
-        id: <input type="text" value = { id } onChange = { onChange } />
-            <Home users={ users } />
-                </>
-  );
+    return <UserForm />;
 }
 
 export default App;
