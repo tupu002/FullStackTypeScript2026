@@ -1,10 +1,10 @@
 ﻿import { useActionState, useState } from "react";
 import type { UserType } from "./Home";
 import { usersData } from "./UserData";
+import SubmitButton from "./SubmitButton";
 
 export default function UserForm() {
     const [users, setUsers] = useState(usersData);
-    const [_formState, action, isPending] = useActionState(
         async (_previousArgs: UserType, formData: FormData) => {
             const user: UserType = {
                 userId: Number(formData.get("userId")?.toString() || 0),
@@ -52,9 +52,7 @@ export default function UserForm() {
                                             <label htmlFor="body" style = {{ marginRight: "5px" }}> Body </label>
                                                 < input id = "body" name = "body" />
                                                     </div>
-                                                    < button type = "submit" disabled = { isPending } >
-                                                        submit
-                                                        </button>
+                                                    < SubmitButton />
 { JSON.stringify(users) }
 </form>
   );
