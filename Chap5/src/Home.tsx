@@ -3,5 +3,5 @@
 }
 
 export default function Home({ label }: HomeProps) {
-    return <div>{ label } </div>;
+    return <div>Received: { label } </div>;
 }
